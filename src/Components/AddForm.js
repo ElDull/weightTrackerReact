@@ -33,10 +33,10 @@ export const AddForm = (props) => {
     }
     
     return (
-            <form onSubmit={addDataPoint}>
-                <input type="text" onChange={handleWeightChange} value={number}/>
-                <input type="date" onChange={handleDateChange}/>
-                <button type="submit">Add New Entry</button>
+            <form onSubmit={addDataPoint} className="mx-auto my-auto container">
+                <input type="text" onChange={handleWeightChange} value={number} className=" mx-2 my-2 rounded-lg border-transparent flex-1 appearance-none border border-gray-300 py-2 px-4 bg-white text-gray-700 placeholder-gray-400 shadow-sm text-base focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent" placeholder="Weight: kg"/>
+                <input type="date" onChange={handleDateChange} className="mx-2 my-2 rounded-lg border-transparent flex-1 appearance-none border border-gray-300 py-2 px-4 bg-white text-gray-700 placeholder-gray-400 shadow-sm text-base focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent"/>
+                <button type="submit" className="py-2 px-5 mx-2 my-2 bg-slate-600 hover:bg-slate-700 focus:ring-slate-500 focus:ring-offset-slate-200 text-white transition ease-in duration-200 text-center text-base font-semibold shadow-md focus:outline-none focus:ring-2 focus:ring-offset-2  rounded-lg">Add New Entry</button>
             </form>
     );
 }
