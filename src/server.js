@@ -55,7 +55,7 @@ app.get("/weights", (req,res) => {
     })
 })
 // Update the weights table with new weights
-app.post("/addWeight", async(req,res) => {
+app.post("/addWeight", (req,res) => {
     console.log(req.body)
     connection.query("INSERT INTO weights(id, date, weight) VALUES (?, ?, ?)", [req.body.id, req.body.date, req.body.weight], (err, results) => {
         if (err){
@@ -64,6 +64,16 @@ app.post("/addWeight", async(req,res) => {
         } else {
             console.log(results)
             res.json({success: "Successfully updated table"})
+        }
+    })
+})
+
+app.get("/removeWeight", (req,res) => {
+    connection.query("DELETE FROM weights ORDER BY id DESC LIMIT 1", (err, results) => {
+        if (err) {
+            res.json({error: err.message})
+        } else {
+            res.json({success: "Successfully removed row"})
         }
     })
 })

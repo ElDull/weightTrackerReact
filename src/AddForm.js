@@ -1,20 +1,27 @@
 import React, {useState} from "react";
 
 export const AddForm = (props) => {
+
     const [date, setDate] = useState("")
     const [number, setNumber] = useState("");
-
+    
+    // Handles change in the date input
     const handleDateChange = ({ target }) => {
         const [year, month, day] = target.value.split("-");
         const newDate = `${month}/${day}/${year}`
         console.log(newDate);
         setDate(newDate);
     }
-    const handleWeightChange = ({target}) => {
+    
+    // Handles change in the weight input.
+    // Makes sure only numbers are able to be input.
+    const handleWeightChange = ({ target }) => {
         const weight = target.value;
         if (Number(weight) || weight === "") {setNumber(weight)}
     }
-    const addDataPoint =(e) => {
+
+    // Submit form and update data state (App component) 
+    const addDataPoint = (e) => {
         e.preventDefault();
         if (number < 100 && number > 30){
             props.updateData({
@@ -22,20 +29,15 @@ export const AddForm = (props) => {
                 date: date,
                 weight: parseFloat(number)
             })
-        } else {
-            return renderError()
-        }
+        } else {return;}
     }
-    const renderError = (error) => {
-        return <p color="red">{error}</p>
-    }
+    
     return (
-        <form onSubmit={addDataPoint}>
-            <input type="text" onChange={handleWeightChange} value={number}/>
-            <input type="date" onChange={handleDateChange}/>
-            <button type="submit">Add New Entry</button>
-            <p>{renderError}</p>
-        </form>
+            <form onSubmit={addDataPoint}>
+                <input type="text" onChange={handleWeightChange} value={number}/>
+                <input type="date" onChange={handleDateChange}/>
+                <button type="submit">Add New Entry</button>
+            </form>
     );
 }
 

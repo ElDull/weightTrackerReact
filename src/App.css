@@ -41,7 +41,7 @@ h2 {
   font-family: Helvetica, sans-serif;
   font-size: 1em;
   text-align:center;
-  flex-direction: column!important;
+  flex-direction: column !important;
   flex-wrap: no-wrap;
 }
 .data {
